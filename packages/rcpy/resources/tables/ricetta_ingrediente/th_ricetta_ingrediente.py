@@ -14,7 +14,7 @@ class View(BaseComponent):
         r.fieldcell('ingrediente_id')
         r.fieldcell('qt')
         r.fieldcell('tot_energia_calorie')
-        r.fieldcell('tot_energia_kilojoule')
+        r.fieldcell('tot_energia_kilojoules')
         r.fieldcell('tot_lipidi_totali_g')
         r.fieldcell('tot_acidi_grassi_saturi_g')
         r.fieldcell('tot_acidi_grassi_monoinsaturi_g')
@@ -38,11 +38,11 @@ class ViewFromRicetta(BaseComponent):
     
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('ingrediente_id', edit=True, width='15em')
-        r.fieldcell('qt', edit=True, width='6em')
+        r.fieldcell('ingrediente_id', edit=dict(remoteRowController=True,validate_notnull=True), width='15em')
+        r.fieldcell('qt', edit=dict(remoteRowController=True,validate_notnull=True), width='6em')
         r.fieldcell('@ingrediente_id.um', name='U.M.', width='4em')
         r.fieldcell('tot_energia_calorie', totalize=True)
-        r.fieldcell('tot_energia_kilojoule',  totalize=True)
+        r.fieldcell('tot_energia_kilojoules',  totalize=True)
         r.fieldcell('tot_lipidi_totali_g', totalize=True)
         r.fieldcell('tot_acidi_grassi_saturi_g', totalize=True)
         r.fieldcell('tot_acidi_grassi_monoinsaturi_g',  totalize=True)
@@ -61,13 +61,17 @@ class ViewFromRicetta(BaseComponent):
         
         if not row['ingrediente_id']:
             return row
-        ingrediente_record = self.db.table('rcpy.ingrediente').record(mode='dict')
+        ingrediente_record = self.db.table('rcpy.ingrediente').record(row['ingrediente_id'], mode='dict')
         if not row['qt']:
             row['qt'] = ingrediente_record['qt_riferimento']
         for k in row.keys():
             if k.startswith('tot_'):
-                valore = k[4:]
-                row[k] = ingrediente_record[valore] * row['qt'] / ingrediente_record['qt_riferimento']   
+                grandezza = k[4:]
+                valore = ingrediente_record.get(grandezza)
+                if valore is None:
+                    row[k] = valore
+                else:
+                    row[k] = valore * row['qt'] / ingrediente_record['qt_riferimento']   
         return row
 
 class Form(BaseComponent):
