@@ -3,6 +3,8 @@
 
 from gnr.web.gnrbaseclasses import BaseComponent
 from gnr.core.gnrdecorator import public_method
+from gnr.core.gnrnumber import decimalRound
+
 
 class View(BaseComponent):
 
@@ -11,8 +13,8 @@ class View(BaseComponent):
         r.fieldcell('ricetta_id')
         r.fieldcell('ingrediente_id')
         r.fieldcell('qt')
-        r.fieldcell('tot_calorie')
-        r.fieldcell('tot_kilojoule')
+        r.fieldcell('tot_energia_calorie')
+        r.fieldcell('tot_energia_kilojoule')
         r.fieldcell('tot_lipidi_totali_g')
         r.fieldcell('tot_acidi_grassi_saturi_g')
         r.fieldcell('tot_acidi_grassi_monoinsaturi_g')
@@ -36,21 +38,37 @@ class ViewFromRicetta(BaseComponent):
     
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('ingrediente_id', edit=True)
-        r.fieldcell('qt', edit=True)
-        r.fieldcell('tot_calorie')
-        r.fieldcell('tot_kilojoule')
-        r.fieldcell('tot_lipidi_totali_g')
-        r.fieldcell('tot_acidi_grassi_saturi_g')
-        r.fieldcell('tot_acidi_grassi_monoinsaturi_g')
-        r.fieldcell('tot_acidi_grassi_polinsaturi_g')
-        r.fieldcell('tot_colesterolo_mg')
-        r.fieldcell('tot_glucidi_disponibili_g')
-        r.fieldcell('tot_zuccheri_g')
-        r.fieldcell('tot_amido_g')
-        r.fieldcell('tot_fibra_alimentare_g')
-        r.fieldcell('tot_proteine_g')
-        r.fieldcell('tot_sale_nacl_g')
+        r.fieldcell('ingrediente_id', edit=True, width='15em')
+        r.fieldcell('qt', edit=True, width='6em')
+        r.fieldcell('@ingrediente_id.um', name='U.M.', width='4em')
+        r.fieldcell('tot_energia_calorie', totalize=True)
+        r.fieldcell('tot_energia_kilojoule',  totalize=True)
+        r.fieldcell('tot_lipidi_totali_g', totalize=True)
+        r.fieldcell('tot_acidi_grassi_saturi_g', totalize=True)
+        r.fieldcell('tot_acidi_grassi_monoinsaturi_g',  totalize=True)
+        r.fieldcell('tot_acidi_grassi_polinsaturi_g', totalize=True)
+        r.fieldcell('tot_colesterolo_mg', totalize=True)
+        r.fieldcell('tot_glucidi_disponibili_g', totalize=True)
+        r.fieldcell('tot_zuccheri_g', totalize=True)
+        r.fieldcell('tot_amido_g', totalize=True)
+        r.fieldcell('tot_fibra_alimentare_g', totalize=True)
+        r.fieldcell('tot_proteine_g', totalize=True)
+        r.fieldcell('tot_sale_nacl_g', totalize=True)
+
+    @public_method
+    def th_remoteRowController(self,row=None,field=None,**kwargs):
+        field = field or 'ingrediente_id'
+        
+        if not row['ingrediente_id']:
+            return row
+        ingrediente_record = self.db.table('rcpy.ingrediente').record(mode='dict')
+        if not row['qt']:
+            row['qt'] = ingrediente_record['qt_riferimento']
+        for k in row.keys():
+            if k.startswith('tot_'):
+                valore = k[4:]
+                row[k] = ingrediente_record[valore] * row['qt'] / ingrediente_record['qt_riferimento']   
+        return row
 
 class Form(BaseComponent):
 
