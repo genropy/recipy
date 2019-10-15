@@ -1,0 +1,128 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+from gnr.web.gnrbaseclasses import BaseComponent
+from gnr.core.gnrdecorator import public_method
+
+class View(BaseComponent):
+
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('nome')
+        r.fieldcell('categoria_id')
+        r.fieldcell('old_id')
+        r.fieldcell('old_categoria')
+        r.fieldcell('old_id_v_40')
+        r.fieldcell('old_id_swissfir')
+        r.fieldcell('sinonimi')
+        r.fieldcell('densita')
+        r.fieldcell('um')
+        r.fieldcell('qt_riferimento')
+        r.fieldcell('energia_kilojoules')
+        r.fieldcell('energia_calorie')
+        r.fieldcell('lipidi_totali_g')
+        r.fieldcell('acidi_grassi_saturi_g')
+        r.fieldcell('acidi_grassi_monoinsaturi_g')
+        r.fieldcell('acidi_grassi_polinsaturi_g')
+        r.fieldcell('colesterolo_mg')
+        r.fieldcell('glucidi_disponibili_g')
+        r.fieldcell('zuccheri_g')
+        r.fieldcell('amido_g')
+        r.fieldcell('fibra_alimentare_g')
+        r.fieldcell('proteine_g')
+        r.fieldcell('sale_nacl_g')
+        r.fieldcell('alcool_g')
+        r.fieldcell('acqua_g')
+        r.fieldcell('attivita_di_vitamina_a_re_g_re')
+        r.fieldcell('attivita_di_vitamina_a_rae_g_re')
+        r.fieldcell('equivalenti_di_all_trans_retinolo_g_re')
+        r.fieldcell('attivita_di_beta_carotene_g_bce')
+        r.fieldcell('beta_carotene_g')
+        r.fieldcell('vitamina_b1_tiamina_mg')
+        r.fieldcell('vitamina_b2_riboflavina_mg')
+        r.fieldcell('vitamina_b6_piridossina_mg')
+        r.fieldcell('vitamina_b12_cobalamina_g')
+        r.fieldcell('niacina_mg')
+        r.fieldcell('folati_g')
+        r.fieldcell('acido_pantotenico_mg')
+        r.fieldcell('vitamina_c_acido_ascorbico_mg')
+        r.fieldcell('vitamina_d_calciferolo_g')
+        r.fieldcell('attivita_di_vitamina_e_mg_ate')
+        r.fieldcell('potassio_k_mg')
+        r.fieldcell('sodio_na_mg')
+        r.fieldcell('cloro_cl_mg')
+        r.fieldcell('calcio_ca_mg')
+        r.fieldcell('magnesio_mg_mg')
+        r.fieldcell('fosforo_p_mg')
+        r.fieldcell('ferro_fe_mg')
+        r.fieldcell('iodio_i_g')
+        r.fieldcell('zinco_zn_mg')
+        r.fieldcell('selenio_se_g')
+
+    def th_order(self):
+        return 'nome'
+
+    def th_query(self):
+        return dict(column='nome', op='contains', val='')
+
+
+
+class Form(BaseComponent):
+
+    def th_form(self, form):
+        pane = form.record
+        fb = pane.formbuilder(cols=2, border_spacing='4px')
+        fb.field('nome' )
+        fb.field('categoria_id' )
+        fb.field('old_id' )
+        fb.field('old_categoria' )
+        fb.field('old_id_v_40' )
+        fb.field('old_id_swissfir' )
+        fb.field('sinonimi' )
+        fb.field('densita' )
+        fb.field('um' )
+        fb.field('qt_riferimento' )
+        fb.field('energia_kilojoules' )
+        fb.field('energia_calorie' )
+        fb.field('lipidi_totali_g' )
+        fb.field('acidi_grassi_saturi_g' )
+        fb.field('acidi_grassi_monoinsaturi_g' )
+        fb.field('acidi_grassi_polinsaturi_g' )
+        fb.field('colesterolo_mg' )
+        fb.field('glucidi_disponibili_g' )
+        fb.field('zuccheri_g' )
+        fb.field('amido_g' )
+        fb.field('fibra_alimentare_g' )
+        fb.field('proteine_g' )
+        fb.field('sale_nacl_g' )
+        fb.field('alcool_g' )
+        fb.field('acqua_g' )
+        fb.field('attivita_di_vitamina_a_re_g_re' )
+        fb.field('attivita_di_vitamina_a_rae_g_re' )
+        fb.field('equivalenti_di_all_trans_retinolo_g_re' )
+        fb.field('attivita_di_beta_carotene_g_bce' )
+        fb.field('beta_carotene_g' )
+        fb.field('vitamina_b1_tiamina_mg' )
+        fb.field('vitamina_b2_riboflavina_mg' )
+        fb.field('vitamina_b6_piridossina_mg' )
+        fb.field('vitamina_b12_cobalamina_g' )
+        fb.field('niacina_mg' )
+        fb.field('folati_g' )
+        fb.field('acido_pantotenico_mg' )
+        fb.field('vitamina_c_acido_ascorbico_mg' )
+        fb.field('vitamina_d_calciferolo_g' )
+        fb.field('attivita_di_vitamina_e_mg_ate' )
+        fb.field('potassio_k_mg' )
+        fb.field('sodio_na_mg' )
+        fb.field('cloro_cl_mg' )
+        fb.field('calcio_ca_mg' )
+        fb.field('magnesio_mg_mg' )
+        fb.field('fosforo_p_mg' )
+        fb.field('ferro_fe_mg' )
+        fb.field('iodio_i_g' )
+        fb.field('zinco_zn_mg' )
+        fb.field('selenio_se_g' )
+
+
+    def th_options(self):
+        return dict(dialog_height='400px', dialog_width='600px')
