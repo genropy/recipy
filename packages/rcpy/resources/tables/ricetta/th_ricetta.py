@@ -58,7 +58,5 @@ class Form(BaseComponent):
                                 export=True,
                                 printRows=True,
                                 searchOn=False,
-                                viewResource='ViewValoriNutrizionali',
-                                nodeId='valoriNutrizionali',
-                                datapath='#FORM.nutrizionali')
+                                viewResource='ViewValoriNutrizionali')
 
