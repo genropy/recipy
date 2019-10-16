@@ -21,7 +21,6 @@ class View(BaseComponent):
         return dict(column='titolo', op='contains', val='')
 
 
-
 class Form(BaseComponent):
 
     def th_form(self, form):
@@ -32,15 +31,34 @@ class Form(BaseComponent):
         fb.field('tipo_ricetta_id', tag='hdbselect')
         fb.field('descrizione', colspan=3, tag='simpleTextArea', height='10ex')
         fb.field('n_porzioni', width='5em', validate_notnull=True)
-        fb.field('minuti_preparazione', width='5em')
+        #fb.field('minuti_preparazione', width='5em')
         fb.field('n_difficolta', tag='filteringSelect', values='3:Difficile,2:Media,1:Facile')
+        
+        tc = bc.tabContainer(region='center')
+        self.schedaRicetta(tc.borderContainer(title='Ingredienti e procedimento'))
+        self.schedaValoriNutrizionali(tc.contentPane(title='Valori nutrizionali'))
 
-        center = bc.contentPane(region='center')
-        center.inlineTableHandler(relation='@ingredienti',
-                                   viewResource='ViewFromRicetta',
-                                   picker='ingrediente_id',
-                                   picker_structure_field='categoria_id')
+    def schedaRicetta(self, bc):
+        bc.contentPane(region='left', width='40%').inlineTableHandler(relation='@ingredienti',
+                                                             searchOn=False,
+                                                             viewResource='ViewEdit',
+                                                             pbl_classes=True,margin='2px',
+                                                             picker='ingrediente_id',
+                                                             picker_structure_field='categoria_id')
 
+        bc.contentPane(region='center').inlineTableHandler(relation = '@fasi',
+                                                            pbl_classes = True,
+                                                            margin = '2px',
+                                                            searchOn = False)
 
-    def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
+    def schedaValoriNutrizionali(self, pane):
+        pane.plainTableHandler(relation='@ingredienti',
+                                pbl_classes=True,
+                                margin='2px',
+                                export=True,
+                                printRows=True,
+                                searchOn=False,
+                                viewResource='ViewValoriNutrizionali',
+                                nodeId='valoriNutrizionali',
+                                datapath='#FORM.nutrizionali')
+

@@ -8,8 +8,8 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('nome', width='20em')
-        r.fieldcell('categoria_id')
+        r.fieldcell('nome', width='25em')
+        r.fieldcell('categoria_id', width='15em')
         r.fieldcell('qt_riferimento')
         r.fieldcell('energia_kilojoules')
         r.fieldcell('energia_calorie')
@@ -32,15 +32,23 @@ class View(BaseComponent):
         return dict(column='nome', op='contains', val='')
 
 
+class ViewEdit(BaseComponent):
+    
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('nome', width='20em', edit=dict(validate_notnull=True))
+        r.fieldcell('categoria_id', edit=dict(validate_notnull=True))
+        r.fieldcell('qt_riferimento',  edit=dict(validate_notnull=True))
+        r.fieldcell('um', edit=dict(validate_notnull=True, tag='filteringSelect', values='g,ml'))
 
 class Form(BaseComponent):
 
     def th_form(self, form):
         pane = form.record
-        fb = pane.formbuilder(cols=2, border_spacing='4px')
-        fb.field('nome' )
-        fb.field('um' )
-        fb.field('qt_riferimento' )
+        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
+        fb.field('nome', colspan=2, width='100%')
+        fb.field('um', tag='filteringSelect', values='g,ml')
+        fb.field('qt_riferimento')
         fb.field('energia_kilojoules' )
         fb.field('energia_calorie' )
         fb.field('lipidi_totali_g' )
