@@ -13,7 +13,7 @@ class Table(object):
                                 relation_name='ingredienti', 
                                 mode='foreignkey', 
                                 onDelete='raise')
-        tbl.column('misura',size=':30',
-                    values='Numero,Millilitri,Grammi,Kg,Cucchiai,Tazze',
-                    name_long='Misura')
+        tbl.column('misura',size=':3',
+                    values='N:Numero,ml:Millilitri,g:Grammi,Kg:Chili',
+                    name_long='Misura',default='g')
 

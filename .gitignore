@@ -1,2 +1,5 @@
 instances/recipy/site/_static/_jslib
 instances/recipy/site/data
+instances/recipy_extra/data
+instances/recipy_extra/site/_static/_jslib
+instances/recipy_extra/site/data/_users

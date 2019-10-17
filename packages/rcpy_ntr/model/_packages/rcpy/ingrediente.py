@@ -3,10 +3,11 @@
 class Table(object):
     def config_db(self,pkg):
         tbl=pkg.table('ingrediente')
-        tbl.column('alimento_id',size='22', group='_', name_long='Alimento',plugToForm=True
+        tbl.column('alimento_id',size='22', group='_', name_long='Alimento',plugToForm=dict(width='20em'),
+                    batchAssign=True
                     ).relation('blv.alimento.id', relation_name='ingredienti_collegati', 
                     mode='foreignkey', onDelete='raise')        
-        tbl.column('conversione', dtype='N', name_long='Conversione',plugToForm=True)  
+        tbl.column('conversione', dtype='N', name_long='Conversione',plugToForm=True,default=1)  
         tbl.aliasColumn('alimento_um','@alimento_id.um',
                         name_long='Unità di misura (alimento)',
                         name_short='UM(Al)',plugToForm=True)
