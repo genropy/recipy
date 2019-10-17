@@ -31,7 +31,6 @@ class Form(BaseComponent):
         fb.field('tipo_ricetta_id', tag='hdbselect')
         fb.field('descrizione', colspan=3, tag='simpleTextArea', height='10ex')
         fb.field('n_porzioni', width='5em', validate_notnull=True)
-        #fb.field('minuti_preparazione', width='5em')
         fb.field('n_difficolta', tag='filteringSelect', values='3:Difficile,2:Media,1:Facile')
         
         tc = bc.tabContainer(region='center')

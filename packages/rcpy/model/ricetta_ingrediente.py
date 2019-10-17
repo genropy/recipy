@@ -7,6 +7,8 @@ class Table(object):
         tbl.column('ricetta_id',size='22',name_long='Ricetta').relation('rcpy.ricetta.id',relation_name='ingredienti', mode='foreignkey', onDelete='cascade')
         tbl.column('ingrediente_id',size='22',name_long='Ingrediente').relation('rcpy.ingrediente.id',relation_name='ricette', mode='foreignkey', onDelete='raise')
         tbl.column('qt',dtype='N',name_long='Quantità')
+
+        tbl.aliasColumn('ingrediente_nome','@ingrediente_id.nome',name_long='Nome ingrediente')
         
         calcolo_tpl = '@ingrediente_id.{} * qt / @ingrediente_id.qt_riferimento / @ricetta_id.n_porzioni'
         

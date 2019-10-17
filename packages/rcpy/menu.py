@@ -7,5 +7,5 @@ def config(root,application=None):
     rcpy.thpage('Tipi ricetta',table='rcpy.tipo_ricetta')
     rcpy.thpage('Ingredienti',table='rcpy.ingrediente')
     rcpy.thpage('Ricette',table='rcpy.ricetta')
-    
+    rcpy.webpage('Preparazione',filepath='/rcpy/preparazione')
     

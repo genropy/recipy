@@ -25,7 +25,3 @@ class Table(object):
         tbl.column('fibra_alimentare_g', dtype='N',name_long='Fibra g')
         tbl.column('proteine_g',dtype='N', name_long='Proteine g')
         tbl.column('sale_nacl_g',dtype='N', name_long='Sale g')
-
-    @metadata(doUpdate=True)
-    def touch_fixNome(self, record, old_record):
-        record['nome'] = record['nome'].replace('(in media)', '')
