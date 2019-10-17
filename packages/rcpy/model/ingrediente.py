@@ -16,3 +16,4 @@ class Table(object):
         tbl.column('misura',size=':30',
                     values='Numero,Millilitri,Grammi,Kg,Cucchiai,Tazze',
                     name_long='Misura')
+

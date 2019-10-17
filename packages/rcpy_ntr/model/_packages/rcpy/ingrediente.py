@@ -22,6 +22,7 @@ class Table(object):
             tbl.formulaColumn(field,formula.format(valore=field),dtype='N',
                             name_long=name_long,name_short=name_short)
 
+
     def campiNutrizionali(self):
         return [
             ('energia_calorie','Calorie','Cal'),
