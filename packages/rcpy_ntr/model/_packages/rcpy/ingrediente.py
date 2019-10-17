@@ -4,7 +4,7 @@ class Table(object):
     def config_db(self,pkg):
         tbl=pkg.table('ingrediente')
         tbl.column('alimento_id',size='22', group='_', name_long='Alimento',plugToForm=dict(width='20em'),
-                    batchAssign=True
+                    batch_assign=True
                     ).relation('blv.alimento.id', relation_name='ingredienti_collegati', 
                     mode='foreignkey', onDelete='raise')        
         tbl.column('conversione', dtype='N', name_long='Conversione',plugToForm=True,default=1)  
