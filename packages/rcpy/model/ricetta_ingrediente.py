@@ -17,5 +17,7 @@ class Table(object):
                                 mode='foreignkey', 
                                 onDelete='raise')
         tbl.column('qt',dtype='N',name_long='Quantità')
+
+        tbl.aliasColumn('ingrediente_nome','@ingrediente_id.nome',name_long='Nome ingrediente')
         
         
