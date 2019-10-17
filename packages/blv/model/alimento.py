@@ -5,7 +5,7 @@ class Table(object):
         tbl =  pkg.table('alimento',pkey='id',name_long='Alimento',name_plural='Alimenti',caption_field='nome')
         self.sysFields(tbl)
         tbl.column('nome',name_long='nome' ,indexed=True)
-        tbl.column('categoria_id',size='22',name_long='categoria_id').relation('rcpy.categoria.id',relation_name='alimenti', mode='foreignkey', onDelete='cascade')
+        tbl.column('categoria_id',size='22',name_long='categoria_id').relation('categoria.id',relation_name='alimenti', mode='foreignkey', onDelete='cascade')
         
         tbl.column('old_id',name_long='id',legacy_name='id')
         tbl.column('old_categoria',name_long='categoria',legacy_name='categoria')

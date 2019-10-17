@@ -7,6 +7,7 @@
 		<gnrcore_adm pkgcode="gnrcore:adm"/>
 		<rcpy/>
 		<blv/>
+		<rcpy_ntr/>
 	</packages>
 
 	<authentication pkg="gnrcore:sys">
