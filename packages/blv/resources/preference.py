@@ -21,9 +21,7 @@
 from gnr.core.gnrdecorator import public_method
 
 class AppPref(object):
-    def permission_glbl(self, **kwargs):
-        return 'admin'
-    def prefpane_glbl(self, parent, **kwargs):
+    def prefpane_blv(self, parent, **kwargs):
         pane = parent.contentPane(**kwargs)
         fb = pane.formbuilder(cols=1,border_spacing='3px')
         fb.button('Dump BLV',action="""genro.mainGenroWindow.genro.publish('open_batch');
