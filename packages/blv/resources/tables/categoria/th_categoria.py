@@ -24,11 +24,11 @@ class Form(BaseComponent):
         top = bc.contentPane(region='top',datapath='.record')
         fb = top.formbuilder(cols=2, border_spacing='4px')
         fb.field('nome')
-        th = bc.contentPane(title='Ingredienti', region='center').inlineTableHandler(relation='@ingredienti',
-                                                                                     pbl_classes=True,
-                                                                                     margin='2px',
-                                                                                     viewResource='ViewEdit')
-        form.htree.relatedTableHandler(th,dropOnRoot=False,inherited=True)
+       # th = bc.contentPane(title='Ingredienti', region='center').inlineTableHandler(relation='@ingredienti',
+       #                                                                              pbl_classes=True,
+       #                                                                              margin='2px',
+       #                                                                              viewResource='ViewEdit')
+       # form.htree.relatedTableHandler(th,dropOnRoot=False,inherited=True)
 
     def th_options(self):
         return dict(dialog_height='400px', dialog_width='600px', hierarchical=True)
