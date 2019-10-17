@@ -10,7 +10,7 @@ class ViewFromRicetta(BaseComponent):
         r = struct.view().rows()
         r.fieldcell('_row_count', counter=True, name='N.',width='3em')
         r.fieldcell('ingrediente_id', width='20em', edit=True)
-        r.fieldcell('@ingrediente_id.misura',width='10em')
+        r.fieldcell('@ingrediente_id.unita_misura',width='10em')
         r.fieldcell('qt',  width='6em', edit=True)
 
 
