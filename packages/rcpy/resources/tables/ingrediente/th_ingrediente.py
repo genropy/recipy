@@ -28,7 +28,7 @@ class Form(BaseComponent):
         fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
         fb.field('nome', width='20em')
         fb.field('ingrediente_tipo_id',width='15em')
-        fb.field('misura',tag='ComboBox',width='15em')
+        fb.field('misura',width='15em')
 
 
     def th_options(self):
