@@ -21,11 +21,9 @@ class View(BaseComponent):
 class Form(BaseComponent):
     def th_form(self, form):
         pane = form.record
-        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
-        fb.field('nome', width='20em')
+        box = pane.div(width='600px')
+        fb = box.formbuilder(cols=2, border_spacing='4px', fld_width='100%',
+                             colswidth='auto', margin_right='20px')
+        fb.field('nome', colspan=2)
         fb.field('ingrediente_tipo_id',width='15em')
         fb.field('unita_misura',width='15em')
-
-
-    def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
