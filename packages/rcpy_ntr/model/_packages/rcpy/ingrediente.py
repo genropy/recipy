@@ -19,23 +19,6 @@ class Table(object):
     
     def aggiungiColonneNutrizionali(self,tbl):
         formula = '$convertitore * @alimento_id.{valore}'
-        for field,name_long,name_short in self.campiNutrizionali():
+        for field,name_long,name_short in self.db.application.packages['rcpy_ntr'].campiNutrizionali():
             tbl.formulaColumn(field,formula.format(valore=field),dtype='N',
                             name_long=name_long,name_short=name_short)
-
-
-    def campiNutrizionali(self):
-        return [
-            ('energia_calorie','Calorie','Cal'),
-            ('lipidi_totali_g','Grassi totali','Grassi'),
-            ('acidi_grassi_saturi_g','Saturi','Saturi'),
-            ('acidi_grassi_monoinsaturi_g','Monoinsaturi','Monoins.'),
-            ('acidi_grassi_polinsaturi_g','Polinsaturi','Polins.'),
-            ('colesterolo_mg','Colesterolo(mg)','Colest(mg)'),
-            ('glucidi_disponibili_g','Glucidi','Glucidi'),
-            ('zuccheri_g','Zuccheri','Zucc.'),
-            ('amido_g','Amido','Amido'),
-            ('fibra_alimentare_g','Fibre','Fibre'),
-            ('proteine_g','Proteine','Proteine'),
-            ('sale_nacl_g','Sale','Sale')
-        ]

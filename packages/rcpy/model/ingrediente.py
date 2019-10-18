@@ -14,8 +14,9 @@ class Table(object):
                                 relation_name='ingredienti', 
                                 mode='foreignkey', 
                                 onDelete='raise')
-        tbl.column('unita_misura',size=':3',
+        tbl.column('ingrediente_um',size=':5',
                     batch_assign=True,
-                    values='N:Numero,ml:ml,g:Grammi,Kg:Chili',
-                    name_long='Misura',default='g')
+                    name_long='UM',default='g'
+                    ).relation('ingrediente_um.codice',
+                                mode='foreignkey')
 
