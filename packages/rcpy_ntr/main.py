@@ -11,7 +11,7 @@ class Package(GnrDboPackage):
         pass
         
     def required_packages(self):
-        return ['recipy:blv']
+        return ['blv:blv']
     
     def campiNutrizionali(self):
         return [
