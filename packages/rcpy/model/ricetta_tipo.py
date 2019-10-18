@@ -8,4 +8,3 @@ class Table(object):
                         caption_field='nome')
         self.sysFields(tbl,hierarchical='nome',counter=True)
         tbl.column('nome',name_long='Nome')
-        tbl.column('descrizione',name_long='Descrizione')

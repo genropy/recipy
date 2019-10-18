@@ -8,11 +8,8 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('nome')
-        r.fieldcell('descrizione')
+        r.fieldcell('hierarchical_nome',width='30em')
 
-    def th_order(self):
-        return 'nome'
 
     def th_query(self):
         return dict(column='id', op='contains', val='')
@@ -25,8 +22,7 @@ class Form(BaseComponent):
         bc = form.center.borderContainer()
         top = bc.contentPane(region='top',datapath='.record')
         fb = top.formbuilder(cols=2, border_spacing='4px')
-        fb.field('nome')
-        fb.field('descrizione')
+        fb.field('nome',width='30em')
         th = bc.contentPane(title='Ricette', region='center').plainTableHandler(relation='@ricette',pbl_classes=True, margin='2px')
         form.htree.relatedTableHandler(th,dropOnRoot=False,inherited=True)
 

@@ -3,9 +3,8 @@
 
 def config(root,application=None):
     rcpy = root.branch('Recipy')
-    rcpy.lookups('Tipi ingrediente', lookup_manager="rcpy.ingrediente_tipo")
     rcpy.thpage('Ingredienti',table='rcpy.ingrediente')
     rcpy.thpage('Tipi ricetta',table='rcpy.ricetta_tipo')
     rcpy.thpage('Ricette',table='rcpy.ricetta')
     rcpy.webpage('Preparazione',filepath='/rcpy/preparazione')
-    
+    rcpy.lookups('Tipi ingrediente', lookup_manager=True)

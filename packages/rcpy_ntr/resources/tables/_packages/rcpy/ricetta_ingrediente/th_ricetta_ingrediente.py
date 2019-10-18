@@ -21,7 +21,7 @@ class ViewValoriNutrizionali(BaseComponent):
 
         r.fieldcell('ingrediente_id', width='100%',min_width='20em')
         r.fieldcell('qt',  width='6em')
-        r.fieldcell('@ingrediente_id.um', name='U.M.', width='4em')
+        r.fieldcell('@ingrediente_id.@alimento_id.um', name='U.M.', width='4em')
 
         energia.fieldcell('energia_calorie', totalize=True)
         energia.fieldcell('energia_kilojoules',  totalize=True)
