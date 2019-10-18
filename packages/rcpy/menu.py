@@ -7,4 +7,4 @@ def config(root,application=None):
     rcpy.thpage('Tipi ricetta',table='rcpy.ricetta_tipo')
     rcpy.thpage('Ricette',table='rcpy.ricetta')
     rcpy.webpage('Preparazione',filepath='/rcpy/preparazione')
-    rcpy.lookups('Tipi ingrediente', lookup_manager=True)
+    rcpy.lookups('Altre tabelle', lookup_manager=True)
