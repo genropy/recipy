@@ -5,8 +5,6 @@ class Table(object):
         tbl=pkg.table('ricetta_ingrediente')
         self.aggiungiColonneNutrizionali(tbl)
 
-
-
     def aggiungiColonneNutrizionali(self,tbl):
         formula = '$qt * @ingrediente_id.{valore}'
         for field,name_long,name_short in self.db.application.packages['rcpy_ntr'].campiNutrizionali():
