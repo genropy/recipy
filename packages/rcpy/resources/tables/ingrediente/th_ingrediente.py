@@ -10,7 +10,7 @@ class View(BaseComponent):
         r = struct.view().rows()
         r.fieldcell('nome', width='25em')
         r.fieldcell('ingrediente_tipo_id',width='15em')
-        r.fieldcell('ingrediente_um',width='15em')
+        r.fieldcell('unita_misura',width='15em')
 
     def th_order(self):
         return 'nome'
@@ -28,7 +28,7 @@ class Form(BaseComponent):
         fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
         fb.field('nome', width='20em')
         fb.field('ingrediente_tipo_id',width='15em')
-        fb.field('ingrediente_um',width='15em')
+        fb.field('unita_misura',width='15em')
 
 
     def th_options(self):
