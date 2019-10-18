@@ -8,9 +8,9 @@ class View(BaseComponent):
 
     def th_struct(self,struct):
         r = struct.view().rows()
-        r.fieldcell('nome', width='25em')
-        r.fieldcell('ingrediente_tipo_id',width='15em')
-        r.fieldcell('unita_misura',width='15em')
+        r.fieldcell('nome')
+        r.fieldcell('tipo_ingrediente')
+        r.fieldcell('unita_misura')
 
     def th_order(self):
         return 'nome'
@@ -18,17 +18,16 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='nome', op='contains', val='')
 
-    def th_top_toolbarsuperiore(self,top):
-        top.slotToolbar('5,sections@ingrediente_tipo_id,*',childname='superiore',_position='<bar')
 
 
 class Form(BaseComponent):
+
     def th_form(self, form):
         pane = form.record
-        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
-        fb.field('nome', width='20em')
-        fb.field('ingrediente_tipo_id',width='15em')
-        fb.field('unita_misura',width='15em')
+        fb = pane.formbuilder(cols=2, border_spacing='4px')
+        fb.field('nome')
+        fb.field('tipo_ingrediente')
+        fb.field('unita_misura')
 
 
     def th_options(self):
