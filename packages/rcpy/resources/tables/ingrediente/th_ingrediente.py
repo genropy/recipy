@@ -18,13 +18,19 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='nome', op='contains', val='')
 
+    def th_top_toolbarsuperiore(self,top):
+        top.slotToolbar('5,sections@ingrediente_tipo_id,*',childname='superiore',_position='<bar')
+
+    def th_options(self):
+        return dict(virtualStore=False, widget='dialog')
+
 class Form(BaseComponent):
     def th_form(self, form):
         pane = form.record
-        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', fld_width='5em')
-        fb.field('nome', width='20em')
-        fb.field('ingrediente_tipo_id',width='15em')
-        fb.field('unita_misura',width='15em')
+        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', colswidth='auto')
+        fb.field('nome', width='30em', colspan=2)
+        fb.field('ingrediente_tipo_id')
+        fb.field('unita_misura')
 
 
     def th_options(self):
