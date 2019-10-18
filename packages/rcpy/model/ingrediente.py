@@ -14,7 +14,7 @@ class Table(object):
                                 onDelete='raise')
         tbl.column('unita_misura',size=':5',
                     batch_assign=True,
-                    name_long='UM',
+                    name_long='Unità di misura',name_short='UM'
                     ).relation('unita_misura.codice',
                                 mode='foreignkey')
 
