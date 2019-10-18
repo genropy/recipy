@@ -5,6 +5,6 @@ class Table(object):
         tbl =  pkg.table('ricetta_tipo',pkey='id',
                         name_long='Tipo Ricetta',
                         name_plural='Tipi ricetta',
-                        caption_field='nome')
-        self.sysFields(tbl, hierarchical='nome', counter=True)
+                        caption_field='nome', lookup=True)
+        self.sysFields(tbl, counter=True)
         tbl.column('nome',name_long='Nome')
