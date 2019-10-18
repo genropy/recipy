@@ -7,11 +7,19 @@ from gnr.core.gnrdecorator import public_method
 class ViewValoriNutrizionali(BaseComponent):
     def th_struct(self,struct):
         r = struct.view().rows()
-        energia = r.columnset('energia', name='Energia', background_color='red')
-        grassi = r.columnset('grassi', name='Grassi', background_color='orange')
-        zuccheri = r.columnset('zuccheri', name='Zuccheri', background_color='green')
+        energia = r.columnset('energia', name='Energia', 
+                                background='rgba(38, 88, 32, 1.00)',
+                                cell_width='5em',cell_background='rgba(38, 88, 32, 0.20)')
+        grassi = r.columnset('grassi', name='Grassi', 
+                            background='rgba(128, 23, 14, 1.00)',
+                            cell_background='rgba(128, 23, 14, 0.20))',
+                            cell_width='5em')
+        zuccheri = r.columnset('zuccheri', name='Zuccheri', 
+                            background='rgba(64, 128, 180, 1.00)',
+                            cell_background='rgba(64, 128, 180, 0.20)',
+                                cell_width='5em')
 
-        r.fieldcell('ingrediente_id', width='100%')
+        r.fieldcell('ingrediente_id', width='100%',min_width='20em')
         r.fieldcell('qt',  width='6em')
         r.fieldcell('@ingrediente_id.um', name='U.M.', width='4em')
 

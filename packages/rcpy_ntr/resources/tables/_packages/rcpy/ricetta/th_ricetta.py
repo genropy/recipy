@@ -15,4 +15,4 @@ class Form(BaseComponent):
         self.valoriNutrizionali(tc.contentPane(title='Valori nutrizionali'))
 
     def valoriNutrizionali(self,pane):
-        pane.plainTableHandler(relation='@ingredienti',viewResource='ViewFromRicetta')
+        pane.plainTableHandler(relation='@ingredienti',viewResource='ViewValoriNutrizionali')
