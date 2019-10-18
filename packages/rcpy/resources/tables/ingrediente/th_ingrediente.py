@@ -18,10 +18,6 @@ class View(BaseComponent):
     def th_query(self):
         return dict(column='nome', op='contains', val='')
 
-    def th_top_toolbarsuperiore(self,top):
-        top.slotToolbar('5,sections@ingrediente_tipo_id,*', childname='superiore', _position='<bar')
-
-
 class Form(BaseComponent):
     def th_form(self, form):
         pane = form.record
