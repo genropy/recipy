@@ -26,7 +26,3 @@ class Form(BaseComponent):
         fb = pane.formbuilder(cols=2, border_spacing='4px')
         fb.field('nome')
         fb.field('tipo_ingrediente')
-
-
-    def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
