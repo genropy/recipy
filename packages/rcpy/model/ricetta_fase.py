@@ -4,7 +4,7 @@ class Table(object):
     def config_db(self,pkg):
         tbl =  pkg.table('ricetta_fase',pkey='id',name_long='Fase ricetta',
                         name_plural='Fasi ricetta',
-                        caption_field='descrizione',lookup=True)
+                        caption_field='descrizione')
         self.sysFields(tbl,counter='ricetta_id')
         tbl.column('ricetta_id',size='22',name_long='Ricetta'
                     ).relation('rcpy.ricetta.id',
