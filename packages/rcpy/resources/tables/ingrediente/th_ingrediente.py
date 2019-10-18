@@ -25,8 +25,3 @@ class Form(BaseComponent):
         fb.field('nome', width='30em', colspan=2)
         fb.field('ingrediente_tipo_id')
         fb.field('unita_misura')
-
-
-
-    def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
