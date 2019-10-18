@@ -26,12 +26,19 @@ class View(BaseComponent):
 
 class Form(BaseComponent):
     def th_form(self, form):
-        pane = form.record
-        fb = pane.formbuilder(cols=2, border_spacing='4px', width='600px', colswidth='auto')
-        fb.field('nome', width='30em', colspan=2)
+        bc = form.center.borderContainer()
+        top = bc.contentPane(region='top', datapath='.record')
+        fb = top.formbuilder(cols=2, border_spacing='4px', fld_width='100%',
+                              colswidth='auto', margin_right='20px')
+        fb.field('nome', colspan=2)
         fb.field('ingrediente_tipo_id')
         fb.field('unita_misura')
 
+        center = bc.contentPane(region='center')
+        center.plainTableHandler(title='Usato nelle ricette',
+                                relation='@ricette', pbl_classes=True, 
+                                viewResource='ViewFromIngrediente', margin='2px')
+
 
     def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px')
+        return dict(dialog_height='500px', dialog_width='600px')

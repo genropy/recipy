@@ -14,3 +14,10 @@ class ViewFromRicetta(BaseComponent):
         r.fieldcell('qt',  width='6em', edit=True)
 
 
+class ViewFromIngrediente(BaseComponent):
+    def th_struct(self,struct):
+        r = struct.view().rows()
+        r.fieldcell('_row_count', counter=True, name='N.',width='3em')
+        r.fieldcell('@ricetta_id.titolo', name='Ricetta', width='100%')
+        r.fieldcell('@ricetta_id.@ricetta_tipo_id.nome', name='Tipo')
+        r.fieldcell('qt',  width='6em', edit=True)
