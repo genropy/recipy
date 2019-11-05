@@ -25,7 +25,3 @@ class Form(BaseComponent):
         fb.field('nome',width='30em')
         th = bc.contentPane(title='Ricette', region='center').plainTableHandler(relation='@ricette',pbl_classes=True, margin='2px')
         form.htree.relatedTableHandler(th,dropOnRoot=False,inherited=True)
-
-
-    def th_options(self):
-        return dict(dialog_height='400px', dialog_width='600px', hierarchical=True)
